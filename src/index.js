@@ -1,18 +1,26 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
+import reportWebVitals from './reportWebVitals'
 
-import './assets/boxicons-2.1.2/css/boxicons.min.css';
-import './assets/css/grid.css'; 
-import reportWebVitals from './reportWebVitals';
-import Layout from './components/layouts/Layout';   
+import { createStore } from 'redux'
 
-document.title= 'IOT Dashboard'
+import { Provider } from 'react-redux'
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+
+import './assets/boxicons-2.1.2/css/boxicons.min.css'
+import './assets/css/grid.css'
+import './assets/css/theme.css'
+import './assets/css/index.css'
+
+import Layout from './components/layout/Layout'
+
+document.title= 'IOT Dassshboard'
+
+ReactDOM.render(
   <React.StrictMode>
-    <Layout />
-  </React.StrictMode>
+ <Layout />
+  </React.StrictMode>,
+   document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
