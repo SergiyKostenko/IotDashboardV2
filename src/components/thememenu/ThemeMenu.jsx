@@ -46,7 +46,6 @@ const color_settings = [
         background: 'green-color',
         class: 'theme-color-green'
     },
-    
     {
         id: 'orange',
         name: 'Orange',
