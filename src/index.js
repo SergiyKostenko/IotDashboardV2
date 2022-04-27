@@ -1,11 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import reportWebVitals from "./reportWebVitals";
-
 import { createStore } from "redux";
-
 import { Provider } from "react-redux";
-
 import "./assets/boxicons-2.1.2/css/boxicons.min.css";
 import "./assets/css/grid.css";
 import "./assets/css/theme.css";
