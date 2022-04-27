@@ -4,9 +4,8 @@ import { Link } from 'react-router-dom';
 import Dropdown from '../dropdown/Dropdown';
 import notifications from '../../assets/JsonData/notification.json';
 import user_image from '../../assets/images/user.gif';
-
+import ThemeMenu from '../thememenu/ThemeMenu';
 import user_menu from '../../assets/JsonData/user_menus.json';
-import { render } from 'react-dom';
 
 const curr_user = {
 	display_name: 'Sergiy',
@@ -66,8 +65,7 @@ const TopNav = () => {
 					{/* dropdown here */}
 				</div>
 				<div className='topnav__right-item'>
-					{/* theme */}
-					<Dropdown />
+				<ThemeMenu/>
 				</div>
 			</div>
 		</div>
