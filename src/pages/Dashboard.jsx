@@ -164,26 +164,18 @@ const Dashboard = () => {
     dispatch(ThemeAction.getTheme());
   });
 
+  const cardsflex = {
+    display : 'flex',
+    'flex-direction' : 'row',
+    'justify-content': 'space-around'
+  }
 
   return (
     <div>
       <h2 className="page-header">Dashboard</h2>
       <div className="row">
-        <div className="col-4">
-          <div className="row">
-            {statusCards.map((item, index) => (
-              <div className="col-6" key={index}>
-                {item.title}
-                <StatusCard
-                  icon={item.icon}
-                  count={item.count}
-                  title={item.subtitle}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="col-8">
+
+        <div className="col-12">
           <div className="card full-height">
             {/* chart*/}
             <Chart
@@ -200,50 +192,26 @@ const Dashboard = () => {
               }
               series={chartOptions.series}
               type="line"
-              height="100%"
+              height="400px%"
             />
           </div>
         </div>
-        <div className="col-4">
-          <div className="card">
-            <div className="card__header">
-              <h3>top customers</h3>
-            </div>
-            <div className="card__body">
-              <Table
-                headData={topCustomers.head}
-                renderHead={(item, index) => renderCustomerHead(item, index)}
-                bodyData={topCustomers.body}
-                renderBody={(item, index) => renderCustomerBody(item, index)}
-              />
-            </div>
-            <div className="card__footer">
-              <Link to="/">View all</Link>
-            </div>
-          </div>
+     
+        <div className="col-12 cards-flex"  style={{cardsflex}}>
+
+            {statusCards.map((item, index) => (
+              <div key={index}>
+                {item.title}
+                <StatusCard
+                  icon={item.icon}
+                  count={item.count}
+                  title={item.subtitle}
+                />
+              </div>
+            ))}
+   
         </div>
-        <div className="col-8">
-          <div className="card">
-            <div className="card__header">
-              <h3>latest orders</h3>
-            </div>
-            <div className="card_body">
-              <Table
-                headData={latestOrders.head}
-                renderHead={(item, index) =>
-                  renderlatestOrdersHead(item, index)
-                }
-                bodyData={latestOrders.body}
-                renderBody={(item, index) =>
-                  renderlatestOrdersBody(item, index)
-                }
-              />
-            </div>
-            <div className="card_footer">
-              <Link to="/">view all</Link>
-            </div>
-          </div>
-        </div>
+
       </div>
     </div>
   );
