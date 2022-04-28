@@ -1,22 +1,22 @@
 [
-    {
-        "icon": "bx bx-shopping-bag",
-        "count": "1,995",
-        "title": "Total sales"
-    },
-    {
-        "icon": "bx bx-cart",
-        "count": "2,001",
-        "title": "Daily visits"
-    },
-    {
-        "icon": "bx bx-dollar-circle",
-        "count": "$2,632",
-        "title": "Total income"
-    },
-    {
-        "icon": "bx bx-receipt",
-        "count": "1,711",
-        "title": "Total orders"
-    }
+	{
+		"icon": "bx bxs-hot",
+		"count": "20.5",
+		"title": "Temperature"
+	},
+	{
+		"icon": "bx bxs-droplet",
+		"count": "45",
+		"title": "Humidity"
+	},
+	{
+		"icon": "bx bx-water",
+		"count": "50",
+		"title": "Pressure"
+	},
+	{
+		"icon": "bx bxs-leaf",
+		"count": "50",
+		"title": "AOC"
+	}
 ]
