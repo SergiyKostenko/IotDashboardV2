@@ -164,6 +164,7 @@ const Dashboard = () => {
     dispatch(ThemeAction.getTheme());
   });
 
+  
   return (
     <div>
       <h2 className="page-header">Dashboard</h2>
