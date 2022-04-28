@@ -2,21 +2,25 @@
 	{
 		"icon": "bx bxs-hot",
 		"count": "20.5",
-		"title": "Temperature"
+		"title": "Temperature",
+        "subtitle": "°C"
 	},
 	{
 		"icon": "bx bxs-droplet",
 		"count": "45",
-		"title": "Humidity"
+		"title": "Humidity",
+        "subtitle": "%"
 	},
 	{
 		"icon": "bx bx-water",
 		"count": "50",
-		"title": "Pressure"
+		"title": "Pressure",
+        "subtitle": "pH"
 	},
 	{
 		"icon": "bx bxs-leaf",
 		"count": "50",
-		"title": "AOC"
+		"title": "AQI",
+        "subtitle": "AQI"
 	}
 ]

@@ -164,7 +164,7 @@ const Dashboard = () => {
     dispatch(ThemeAction.getTheme());
   });
 
-  
+
   return (
     <div>
       <h2 className="page-header">Dashboard</h2>
@@ -177,7 +177,7 @@ const Dashboard = () => {
                 <StatusCard
                   icon={item.icon}
                   count={item.count}
-                  title={item.title}
+                  title={item.subtitle}
                 />
               </div>
             ))}
