@@ -59,11 +59,6 @@ const Dashboard = () => {
     dispatch(ThemeAction.getTheme());
   });
 
-  const cardsflex = {
-    display : 'flex',
-    'flex-direction' : 'row',
-    'justify-content': 'space-around'
-  }
 
   return (
     <div>
