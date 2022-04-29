@@ -64,7 +64,7 @@ const Dashboard = () => {
 				.then((data) => console.log(data));
 			setReady(true);
 		}
-	});
+	},[dispatch,isReady]);
 
 	return (
 		<div>
