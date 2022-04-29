@@ -3,8 +3,6 @@ import statusCards from "../assets/JsonData/status-card-data.json";
 import StatusCard from "../components/status-card/StatusCard";
 import Chart from "react-apexcharts";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-import Table from "../components/table/Table";
 import ThemeAction from "../redux/actions/ThemeAction";
 import Badge from "../components/badge/Badge";
 
@@ -52,36 +50,7 @@ const chartOptions = {
   },
 };
 
-const topCustomers = {
-  head: ["user", "total orders", "total spending"],
-  body: [
-    {
-      username: "john doe",
-      order: "490",
-      price: "$15,870",
-    },
-    {
-      username: "frank iva",
-      order: "250",
-      price: "$12,251",
-    },
-    {
-      username: "anthony baker",
-      order: "120",
-      price: "$10,840",
-    },
-    {
-      username: "frank iva",
-      order: "110",
-      price: "$9,251",
-    },
-    {
-      username: "anthony baker",
-      order: "80",
-      price: "$8,840",
-    },
-  ],
-};
+
 
 const renderCustomerHead = (item, index) => <th key={index}>{item}</th>;
 

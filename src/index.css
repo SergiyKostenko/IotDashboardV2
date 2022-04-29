@@ -105,7 +105,9 @@ input:focus {
 }
 
 .cards-flex {
-	display: flex; flex-direction: row; justify-content: space-around;
+	display: flex; 
+    flex-direction: row; 
+    justify-content: space-around;
 }
 
 .card__header {
