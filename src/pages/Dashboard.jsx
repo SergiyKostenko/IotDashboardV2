@@ -4,7 +4,6 @@ import StatusCard from "../components/status-card/StatusCard";
 import Chart from "react-apexcharts";
 import { useSelector, useDispatch } from "react-redux";
 import ThemeAction from "../redux/actions/ThemeAction";
-import Badge from "../components/badge/Badge";
 
 const chartOptions = {
   series: [
@@ -51,79 +50,6 @@ const chartOptions = {
 };
 
 
-
-const renderCustomerHead = (item, index) => <th key={index}>{item}</th>;
-
-const renderCustomerBody = (item, index) => (
-  <tr key={index}>
-    <td>{item.username}</td>
-    <td>{item.order}</td>
-    <td>{item.price}</td>
-  </tr>
-);
-
-const latestOrders = {
-  head: ["order id", "user", "total price", "date", "status"],
-  body: [
-    {
-      id: "#OD1711",
-      user: "john doe",
-      date: "17 Jun 2021",
-      price: "$900",
-      status: "shipping",
-    },
-    {
-      id: "#OD1712",
-      user: "frank iva",
-      date: "1 Jun 2021",
-      price: "$400",
-      status: "paid",
-    },
-    {
-      id: "#OD1713",
-      user: "anthony baker",
-      date: "27 Jun 2021",
-      price: "$200",
-      status: "pending",
-    },
-    {
-      id: "#OD1712",
-      user: "frank iva",
-      date: "1 Jun 2021",
-      price: "$400",
-      status: "paid",
-    },
-    {
-      id: "#OD1713",
-      user: "anthony baker",
-      date: "27 Jun 2021",
-      price: "$200",
-      status: "refund",
-    },
-  ],
-};
-
-const orderStatus = {
-  shipping: "primary",
-  pending: "warning",
-  paid: "success",
-  refund: "danger",
-};
-
-const renderlatestOrdersHead = (item, index) => <th key={index}>{item}</th>;
-
-const renderlatestOrdersBody = (item, index) => (
-  <tr key={index}>
-    <td>{item.id}</td>
-    <td>{item.user}</td>
-    <td>{item.date}</td>
-    <td>{item.price}</td>
-    <td>
-      <Badge type={orderStatus[item.status]} content={item.status} />
-    </td>
-  </tr>
-);
-
 const Dashboard = () => {
   const themeReducer = useSelector((state) => state.ThemeReducer).mode;
 
@@ -166,7 +92,7 @@ const Dashboard = () => {
           </div>
         </div>
      
-        <div className="col-12 cards-flex"  style={{cardsflex}}>
+        <div className="col-12 cards-flex"  style={{display:"flex",flexDirection:"row",'justify-content':"space-around"}}>
 
             {statusCards.map((item, index) => (
               <div key={index}>
