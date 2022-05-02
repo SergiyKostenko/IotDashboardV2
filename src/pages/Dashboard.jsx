@@ -51,21 +51,26 @@ const chartOptions = {
 
 const Dashboard = () => {
 	const themeReducer = useSelector((state) => state.ThemeReducer).mode;
-	const [isReady, setReady] = useState(false);
 	const dispatch = useDispatch();
+	const [liveData, setliveData] = useState(null);
 
+	//redo without redux
 	useEffect(() => {
 		dispatch(ThemeAction.getTheme());
-		if (!isReady) {
-			let url = 'https://dog.ceo/api/breeds/image/random';
-			fetch(url)
-				.then((response) => response.json())
-				// 4. Setting *dogImage* to the image url that we received from the response above
-				.then((data) => console.log(data));
-			setReady(true);
-		}
-	},[dispatch,isReady]);
+	});
 
+	useEffect(() => {
+		let url =
+			'https://myamazingiotbackend.azurewebsites.net/api/GetData?days=20&code=o97MlGa4Qo4zEKOW1bfG8Kh3ze0cUpdVZgbecHA0jQ4hGanvubCbFw==';
+		fetch(url)
+			.then((response) => response.json())
+			// 4. Setting *dogImage* to the image url that we received from the response above
+			.then((data) => {
+				console.log(data);
+				setliveData(data[data.length - 1]);
+				//console.log(lastRecord);
+			});
+	}, []);
 	return (
 		<div>
 			<h2 className='page-header'>Dashboard</h2>
@@ -99,6 +104,7 @@ const Dashboard = () => {
 						flexDirection: 'row',
 						justifyContent: 'space-around',
 					}}>
+				<span>{liveData===null ? '': liveData.humidity}</span>	
 					{statusCards.map((item, index) => (
 						<div key={index}>
 							{item.title}
