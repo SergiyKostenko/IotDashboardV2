@@ -105,44 +105,32 @@ const Dashboard = () => {
 						justifyContent: 'space-around',
 					}}>
 					<div>
-					Temperature Inside
+						Temperature Inside
 						<StatusCard
-							icon="bx bxs-hot"
+							icon='bx bxs-hot'
 							count={liveData === null ? '-' : liveData.temperature}
-							title="°C"
+							title='°C'
 						/>
 					</div>
 					<div>
-					Temperature outiside
-						<StatusCard
-							icon="bx bxs-hot"
-							count="10.5"
-							title="°C"
-						/>
+						Temperature outiside
+						<StatusCard icon='bx bxs-hot' count='10.5' title='°C' />
 					</div>
 					<div>
-					Humidity
+						Humidity
 						<StatusCard
-							icon="bx bxs-droplet"
+							icon='bx bxs-droplet'
 							count={liveData === null ? '-' : liveData.humidity}
-							title="%"
+							title='%'
 						/>
 					</div>
 					<div>
-					Pressure
-						<StatusCard
-							icon="bx bx-water"
-							count="50"
-							title="pH"
-						/>
+						Pressure
+						<StatusCard icon='bx bx-water' count='50' title='pH' />
 					</div>
 					<div>
-					AQI
-						<StatusCard
-							icon="bx bxs-leaf"
-							count="50"
-							title="AQI"
-						/>
+						AQI
+						<StatusCard icon='bx bxs-leaf' count='50' title='AQI' />
 					</div>
 				</div>
 			</div>
