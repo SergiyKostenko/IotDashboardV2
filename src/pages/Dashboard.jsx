@@ -104,17 +104,46 @@ const Dashboard = () => {
 						flexDirection: 'row',
 						justifyContent: 'space-around',
 					}}>
-				<span>{liveData===null ? '': liveData.humidity}</span>	
-					{statusCards.map((item, index) => (
-						<div key={index}>
-							{item.title}
-							<StatusCard
-								icon={item.icon}
-								count={item.count}
-								title={item.subtitle}
-							/>
-						</div>
-					))}
+					<div>
+					Temperature Inside
+						<StatusCard
+							icon="bx bxs-hot"
+							count={liveData === null ? '-' : liveData.temperature}
+							title="°C"
+						/>
+					</div>
+					<div>
+					Temperature outiside
+						<StatusCard
+							icon="bx bxs-hot"
+							count="10.5"
+							title="°C"
+						/>
+					</div>
+					<div>
+					Humidity
+						<StatusCard
+							icon="bx bxs-droplet"
+							count={liveData === null ? '-' : liveData.humidity}
+							title="%"
+						/>
+					</div>
+					<div>
+					Pressure
+						<StatusCard
+							icon="bx bx-water"
+							count="50"
+							title="pH"
+						/>
+					</div>
+					<div>
+					AQI
+						<StatusCard
+							icon="bx bxs-leaf"
+							count="50"
+							title="AQI"
+						/>
+					</div>
 				</div>
 			</div>
 		</div>
