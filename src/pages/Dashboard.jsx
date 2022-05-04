@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import statusCards from '../assets/JsonData/status-card-data.json';
 import StatusCard from '../components/status-card/StatusCard';
 import Chart from 'react-apexcharts';
 import { useSelector, useDispatch } from 'react-redux';
@@ -61,14 +60,12 @@ const Dashboard = () => {
 
 	useEffect(() => {
 		let url =
-			'https://myamazingiotbackend.azurewebsites.net/api/GetData?days=20&code=o97MlGa4Qo4zEKOW1bfG8Kh3ze0cUpdVZgbecHA0jQ4hGanvubCbFw==';
+			'https://myamazingiotbackend.azurewebsites.net/api/GetData?days=40&code=o97MlGa4Qo4zEKOW1bfG8Kh3ze0cUpdVZgbecHA0jQ4hGanvubCbFw==';
 		fetch(url)
 			.then((response) => response.json())
-			// 4. Setting *dogImage* to the image url that we received from the response above
 			.then((data) => {
 				console.log(data);
 				setliveData(data[data.length - 1]);
-				//console.log(lastRecord);
 			});
 	}, []);
 	return (
