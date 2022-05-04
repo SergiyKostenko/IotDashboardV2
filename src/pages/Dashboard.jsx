@@ -7,12 +7,12 @@ import ThemeAction from '../redux/actions/ThemeAction';
 const chartOptions = {
 	series: [
 		{
-			name: 'Online Customers',
-			data: [40, 70, 20, 90, 36, 80, 30, 91, 60],
+			name: 'Temperature',
+			data: [],
 		},
 		{
-			name: 'Store Customers',
-			data: [40, 30, 70, 80, 40, 16, 20, 51, 10],
+			name: 'Humidity',
+			data: [],
 		},
 	],
 	options: {
@@ -48,10 +48,23 @@ const chartOptions = {
 	},
 };
 
+const prepareChartData = data => {
+	if (data!=null){
+	data.forEach((item) => { 
+	//	console.log(item);
+		chartOptions.series[0].data.push(item.temperature);
+		chartOptions.series[1].data.push(item.humidity);
+	})
+}
+console.log(chartOptions);
+return data === null ? [] : chartOptions.series
+}
+
 const Dashboard = () => {
 	const themeReducer = useSelector((state) => state.ThemeReducer).mode;
 	const dispatch = useDispatch();
 	const [liveData, setliveData] = useState(null);
+	const [data, setdata] = useState(null);
 
 	//redo without redux
 	useEffect(() => {
@@ -60,11 +73,12 @@ const Dashboard = () => {
 
 	useEffect(() => {
 		let url =
-			'https://myamazingiotbackend.azurewebsites.net/api/GetData?days=40&code=o97MlGa4Qo4zEKOW1bfG8Kh3ze0cUpdVZgbecHA0jQ4hGanvubCbFw==';
+			'https://myamazingiotbackend.azurewebsites.net/api/GetData?days=30&code=o97MlGa4Qo4zEKOW1bfG8Kh3ze0cUpdVZgbecHA0jQ4hGanvubCbFw==';
 		fetch(url)
 			.then((response) => response.json())
 			.then((data) => {
 				console.log(data);
+				setdata(data);
 				setliveData(data[data.length - 1]);
 			});
 	}, []);
@@ -87,7 +101,7 @@ const Dashboard = () => {
 											theme: { mode: 'light' },
 									  }
 							}
-							series={chartOptions.series}
+							series={prepareChartData(data)}
 							type='line'
 							height='400px%'
 						/>
