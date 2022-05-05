@@ -51,7 +51,6 @@ const chartOptions = {
 const prepareChartData = data => {
 	if (data!=null){
 	data.forEach((item) => { 
-	//	console.log(item);
 		chartOptions.series[0].data.push(item.temperature);
 		chartOptions.series[1].data.push(item.humidity);
 	})
