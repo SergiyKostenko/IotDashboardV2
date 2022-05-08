@@ -27,17 +27,7 @@ const chartOptions = {
 			curve: 'smooth',
 		},
 		xaxis: {
-			categories: [
-				'Jan',
-				'Feb',
-				'Mar',
-				'Apr',
-				'May',
-				'Jun',
-				'Jul',
-				'Aug',
-				'Sep',
-			],
+			categories: [],
 		},
 		legend: {
 			position: 'top',
@@ -48,16 +38,23 @@ const chartOptions = {
 	},
 };
 
-const prepareChartData = data => {
-	if (data!=null){
-	data.forEach((item) => { 
-		chartOptions.series[0].data.push(item.temperature);
-		chartOptions.series[1].data.push(item.humidity);
-	})
-}
-console.log(chartOptions);
-return data === null ? [] : chartOptions.series
-}
+const prepareChartData = (data) => {
+	if (data != null) {
+		data.forEach((item) => {
+			chartOptions.options.xaxis.categories.push(item.rowKey);
+		
+		});
+
+		data.forEach((item) => {
+			//	chartOptions.options.xaxis.categories.push(item.rowKey);
+			chartOptions.series[0].data.push(item.temperature);
+			chartOptions.series[1].data.push(item.humidity);
+		});
+
+		console.log(chartOptions);
+	}
+	return data === null ? [] : chartOptions.series;
+};
 
 const Dashboard = () => {
 	const themeReducer = useSelector((state) => state.ThemeReducer).mode;
@@ -76,7 +73,6 @@ const Dashboard = () => {
 		fetch(url)
 			.then((response) => response.json())
 			.then((data) => {
-				console.log(data);
 				setdata(data);
 				setliveData(data[data.length - 1]);
 			});
