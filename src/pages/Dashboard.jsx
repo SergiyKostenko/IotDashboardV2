@@ -7,12 +7,12 @@ import ThemeAction from '../redux/actions/ThemeAction';
 const chartOptions = {
 	series: [
 		{
-			name: 'Temperature',
-			data: [3,3],
+			name: 'Online Customers',
+			data: [40, 70, 20, 90, 36, 80, 30, 91, 60],
 		},
 		{
-			name: 'Humidity',
-			data: [],
+			name: 'Store Customers',
+			data: [40, 30, 70, 80, 40, 16, 20, 51, 10],
 		},
 	],
 	options: {
@@ -28,16 +28,16 @@ const chartOptions = {
 		},
 		xaxis: {
 			categories: [
-				"Jan",
-				"Feb",
-				"Mar",
-				"Apr",
-				"May",
-				"Jun",
-				"Jul",
-				"Aug",
-				"Sep",
-			  ],
+				'Jan',
+				'Feb',
+				'Mar',
+				'Apr',
+				'May',
+				'Jun',
+				'Jul',
+				'Aug',
+				'Sep',
+			],
 		},
 		legend: {
 			position: 'top',
@@ -48,38 +48,11 @@ const chartOptions = {
 	},
 };
 
-const prepareChartData = (data) => {
-	if (data != null) {
-		data.forEach((item) => {
-			chartOptions.options.xaxis.categories.push(item.rowKey);
-		});
-
-		data.forEach((item) => {
-			chartOptions.options.xaxis.categories.push(item.rowKey);
-			chartOptions.series[0].data.push(item.temperature);
-			chartOptions.series[1].data.push(item.humidity);
-		});
-
-		console.log(chartOptions);
-	}
-	//	return data === null ? [] : chartOptions.series;
-};
-
 const Dashboard = () => {
 	const themeReducer = useSelector((state) => state.ThemeReducer).mode;
 	const dispatch = useDispatch();
 	const [liveData, setliveData] = useState(null);
-	const [chartOptions, setchartOptions] = useState([
-		{
-			name: 'Temperature',
-			data: [3,3,5,5],
-		},
-		{
-			name: 'Humidity',
-			data: []
-		}
-	]);
-	const [chartSeries, setchartSeries] = useState({
+	const [chartConfig, setchartConfig] = useState({
 		color: ['#6ab04c', '#2980b9'],
 		chart: {
 			background: 'transparent',
@@ -92,16 +65,16 @@ const Dashboard = () => {
 		},
 		xaxis: {
 			categories: [
-				"Jan",
-				"Feb",
-				"Mar",
-				"Apr",
-				"May",
-				"Jun",
-				"Jul",
-				"Aug",
-				"Sep",
-			  ],
+				'Jan',
+				'Feb',
+				'Mar',
+				'Apr',
+				'May',
+				'Jun',
+				'Jul',
+				'Aug',
+				'Sep',
+			],
 		},
 		legend: {
 			position: 'top',
@@ -111,6 +84,16 @@ const Dashboard = () => {
 		},
 	});
 
+	const [chartSeries, setchartSeries] = useState([
+		{
+			name: 'Online Customers',
+			data: [40, 70, 20, 90, 36, 80, 30, 91, 60],
+		},
+		{
+			name: 'Store Customers',
+			data: [40, 30, 70, 80, 40, 16, 20, 51, 10],
+		},
+	]);
 
 	//redo without redux
 	useEffect(() => {
@@ -124,7 +107,7 @@ const Dashboard = () => {
 			.then((response) => response.json())
 			.then((data) => {
 				setliveData(data[data.length - 1]);
-				prepareChartData(data);
+				//	prepareChartData(data);
 			});
 	}, []);
 	return (
@@ -133,16 +116,17 @@ const Dashboard = () => {
 			<div className='row'>
 				<div className='col-12'>
 					<div className='card full-height'>
+					
 						{/* chart*/}
 						<Chart
 							options={
 								themeReducer === 'theme-mode-dark'
 									? {
-											...chartOptions,
+											...chartOptions.options,
 											theme: { mode: 'dark' },
 									  }
 									: {
-											...chartOptions,
+											...chartOptions.options,
 											theme: { mode: 'light' },
 									  }
 							}
