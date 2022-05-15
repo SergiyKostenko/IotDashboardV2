@@ -52,6 +52,7 @@ const Dashboard = () => {
 	]);
 
 	const prepareChartData = (data) => {
+
 		if (data != null) {
 			var categories = [];
 			var temperature = [];
@@ -62,7 +63,7 @@ const Dashboard = () => {
 				humidity.push(item.humidity);
 			});
 			console.log(data);
-			setchartSeries(
+			setchartSeries([
 				{
 					name: 'Temperature',
 					data: temperature,
@@ -71,7 +72,7 @@ const Dashboard = () => {
 					name: 'Humidity',
 					data: humidity,
 				},
-			);
+			]);
 			setchartConfig({
 				color: ['#6ab04c', '#2980b9'],
 				chart: {
@@ -94,7 +95,6 @@ const Dashboard = () => {
 				},
 			});
 		}
-		//	return data === null ? [] : chartOptions.series;
 	};
 
 	//redo without redux
@@ -104,12 +104,12 @@ const Dashboard = () => {
 
 	useEffect(() => {
 		let url =
-			'https://myamazingiotbackend.azurewebsites.net/api/GetData?days=45&code=o97MlGa4Qo4zEKOW1bfG8Kh3ze0cUpdVZgbecHA0jQ4hGanvubCbFw==';
+			'https://myamazingiotbackend.azurewebsites.net/api/GetData?days=35&code=o97MlGa4Qo4zEKOW1bfG8Kh3ze0cUpdVZgbecHA0jQ4hGanvubCbFw==';
 		fetch(url)
 			.then((response) => response.json())
 			.then((data) => {
 				setliveData(data[data.length - 1]);
-				//prepareChartData(data);
+				prepareChartData(data);
 			});
 	}, []);
 
