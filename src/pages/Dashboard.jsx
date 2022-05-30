@@ -51,8 +51,8 @@ const Dashboard = () => {
 		},
 	]);
 
+	const [chartType, setchartType] = useState("");
 	const prepareChartData = (data) => {
-
 		if (data != null) {
 			var categories = [];
 			var temperature = [];
@@ -117,6 +117,12 @@ const Dashboard = () => {
 		<div>
 			<h2 className='page-header'>Dashboard</h2>
 			<div className='row'>
+				<select value={chartType} onChange={this.handleChange}>
+					<option value='grapefruit'>Grapefruit</option>
+					<option value='lime'>Lime</option>
+					<option value='coconut'>Coconut</option>
+					<option value='mango'>Mango</option>
+				</select>
 				<div className='col-12'>
 					<div className='card full-height'>
 						{/* chart*/}
