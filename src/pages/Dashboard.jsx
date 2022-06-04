@@ -5,6 +5,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import ThemeAction from '../redux/actions/ThemeAction';
 
 const Dashboard = () => {
+	const chartTypeOptions = [
+		{ label: 'line', value: 'line' },
+		{ label: 'area', value: 'area' }
+	];
 	const themeReducer = useSelector((state) => state.ThemeReducer).mode;
 	const dispatch = useDispatch();
 	const [liveData, setliveData] = useState(null);
@@ -51,7 +55,7 @@ const Dashboard = () => {
 		},
 	]);
 
-	const [chartType, setchartType] = useState("");
+	const [chartType, setchartType] = useState(chartTypeOptions[0].value);
 	const prepareChartData = (data) => {
 		if (data != null) {
 			var categories = [];
@@ -101,10 +105,10 @@ const Dashboard = () => {
 	useEffect(() => {
 		dispatch(ThemeAction.getTheme());
 	});
-
+	/*
 	useEffect(() => {
 		let url =
-			'https://myamazingiotbackend.azurewebsites.net/api/GetData?days=55&code=o97MlGa4Qo4zEKOW1bfG8Kh3ze0cUpdVZgbecHA0jQ4hGanvubCbFw==';
+			'https://myamazingiotbackend.azurewebsites.net/api/GetData?days=75&code=o97MlGa4Qo4zEKOW1bfG8Kh3ze0cUpdVZgbecHA0jQ4hGanvubCbFw==';
 		fetch(url)
 			.then((response) => response.json())
 			.then((data) => {
@@ -112,16 +116,20 @@ const Dashboard = () => {
 				prepareChartData(data);
 			});
 	}, []);
+*/
 
 	return (
 		<div>
 			<h2 className='page-header'>Dashboard</h2>
 			<div className='row'>
-				<select value={chartType} onChange={this.handleChange}>
-					<option value='grapefruit'>Grapefruit</option>
-					<option value='lime'>Lime</option>
-					<option value='coconut'>Coconut</option>
-					<option value='mango'>Mango</option>
+				<select
+					value={chartType}
+					onChange={(e) => setchartType(e.target.value)}>
+					{chartTypeOptions.map((o) => (
+						<option key={o.value} value={o.value}>
+							{o.label}
+						</option>
+					))}
 				</select>
 				<div className='col-12'>
 					<div className='card full-height'>
@@ -139,7 +147,7 @@ const Dashboard = () => {
 									  }
 							}
 							series={chartSeries}
-							type='line'
+							type={chartType}
 							height='400px%'
 						/>
 					</div>
