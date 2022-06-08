@@ -12,6 +12,7 @@ const Dashboard = () => {
 	const themeReducer = useSelector((state) => state.ThemeReducer).mode;
 	const dispatch = useDispatch();
 	const [liveData, setliveData] = useState(null);
+
 	const [chartConfig, setchartConfig] = useState({
 		color: ['#6ab04c', '#2980b9'],
 		chart: {
@@ -105,7 +106,7 @@ const Dashboard = () => {
 	useEffect(() => {
 		dispatch(ThemeAction.getTheme());
 	});
-	/*
+
 	useEffect(() => {
 		let url =
 			'https://myamazingiotbackend.azurewebsites.net/api/GetData?days=75&code=o97MlGa4Qo4zEKOW1bfG8Kh3ze0cUpdVZgbecHA0jQ4hGanvubCbFw==';
@@ -116,7 +117,7 @@ const Dashboard = () => {
 				prepareChartData(data);
 			});
 	}, []);
-*/
+
 
 	return (
 		<div>
