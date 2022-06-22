@@ -109,7 +109,7 @@ const Dashboard = () => {
 
 	useEffect(() => {
 		let url =
-			'https://myamazingiotbackend.azurewebsites.net/api/GetData?days=75&code=o97MlGa4Qo4zEKOW1bfG8Kh3ze0cUpdVZgbecHA0jQ4hGanvubCbFw==';
+			'https://myamazingiotbackend.azurewebsites.net/api/GetData?days=75&code=Isr_epWmKR9Ix0Byid9WoJ50UuaW3JY1uacQumYrW4iXAzFuA6cQ2g==&clientId=apim-ddkasdml23';
 		fetch(url)
 			.then((response) => response.json())
 			.then((data) => {
