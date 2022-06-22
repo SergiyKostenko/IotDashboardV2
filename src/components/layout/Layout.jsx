@@ -7,6 +7,9 @@ import { BrowserRouter, Route } from "react-router-dom";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import ThemeAction from "../../redux/actions/ThemeAction";
+import { ApplicationInsights } from '@microsoft/applicationinsights-web';
+import { ReactPlugin, withAITracking } from '@microsoft/applicationinsights-react-js';
+import { createBrowserHistory } from "history";
 
 const Layout = () => {
   const themeReducer = useSelector(state => state.ThemeReducer)
@@ -23,6 +26,20 @@ const Layout = () => {
       dispatch(ThemeAction.setColor(colorClass))
   }, [dispatch])
 
+
+
+  const browserHistory = createBrowserHistory({ basename: '' });
+  var reactPlugin = new ReactPlugin();
+  var appInsights = new ApplicationInsights({
+      config: {
+          instrumentationKey: '04d3342f-5ccd-4cc1-8360-43f9d9cbbc12',
+          extensions: [reactPlugin],
+          extensionConfig: {
+            [reactPlugin.identifier]: { history: browserHistory }
+          }
+      }
+  });
+  appInsights.loadAppInsights();
 
   return (
     <BrowserRouter>
