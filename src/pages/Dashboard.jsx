@@ -47,15 +47,25 @@ const Dashboard = () => {
 
 	const [chartSeries, setchartSeries] = useState([
 		{
-			name: 'Online Customers',
-			data: [40, 70, 20, 90, 36, 80, 30, 91, 60],
+			name: '',
+			data: [],
 		},
 		{
-			name: 'Store Customers',
-			data: [40, 30, 70, 80, 40, 16, 20, 51, 10],
+			name: '',
+			data: [],
 		},
 	]);
-
+	const SidebarItem = (props) => {
+		const active = props.active ? "active" : "";
+		return (
+		  <div className="sidebar__item">
+			<div className={`sidebar__item-inner ${active}`}>
+			  <i className={props.icon}></i>
+			  <span>{chartTypeOptions[0].label}</span>
+			</div>
+		  </div>
+		);
+	  };
 	const [chartType, setchartType] = useState(chartTypeOptions[0].value);
 	const prepareChartData = (data) => {
 		if (data != null) {
@@ -123,15 +133,12 @@ const Dashboard = () => {
 		<div>
 			<h2 className='page-header'>Dashboard</h2>
 			<div className='row'>
-				<select
-					value={chartType}
-					onChange={(e) => setchartType(e.target.value)}>
-					{chartTypeOptions.map((o) => (
-						<option key={o.value} value={o.value}>
-							{o.label}
-						</option>
-					))}
-				</select>
+			<SidebarItem
+            title={"item.display_name"}
+          //  icon={item.icon}
+          //  active={index === activeItem}
+          />
+		
 				<div className='col-12'>
 					<div className='card full-height'>
 						{/* chart*/}
