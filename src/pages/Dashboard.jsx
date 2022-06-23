@@ -56,17 +56,7 @@ const Dashboard = () => {
 			data: [],
 		},
 	]);
-	const SidebarItem = (props) => {
-		const active = props.active ? 'active' : '';
-		return (
-			<div className='sidebar__item'>
-				<div className={`sidebar__item-inner ${active}`}>
-					<i className={props.icon}></i>
-					<span>{chartTypeOptions[0].label}</span>
-				</div>
-			</div>
-		);
-	};
+
 	const [chartType, setchartType] = useState(chartTypeOptions[0].value);
 	const prepareChartData = (data) => {
 		if (data != null) {
@@ -131,35 +121,12 @@ const Dashboard = () => {
 
 	return (
 		<div>
-			<h2 className='page-header'>Dashboard</h2>
 			<div className='row'>
 				<Dropdown
-				//	customToggle={() => renderUserToggle(curr_user)}
-					contentData={["s","1"]}
-				//	renderItems={(item, index) => renderUserMenu(item, index)}
+					//	customToggle={() => renderUserToggle(curr_user)}
+					contentData={['s', '1']}
+					//	renderItems={(item, index) => renderUserMenu(item, index)}
 				/>
-
-				<div className='col-12'>
-					<div className='card full-height'>
-						<Chart
-							options={
-								themeReducer === 'theme-mode-dark'
-									? {
-											...chartConfig,
-											theme: { mode: 'dark' },
-									  }
-									: {
-											...chartConfig,
-											theme: { mode: 'light' },
-									  }
-							}
-							series={chartSeries}
-							type={chartType}
-							height='350px%'
-						/>
-					</div>
-				</div>
-
 				<div
 					className='col-12 cards-flex'
 					style={{
@@ -194,6 +161,26 @@ const Dashboard = () => {
 					<div>
 						AQI
 						<StatusCard icon='bx bxs-leaf' count='50' title='AQI' />
+					</div>
+				</div>
+				<div className='col-12'>
+					<div className='card full-height'>
+						<Chart
+							options={
+								themeReducer === 'theme-mode-dark'
+									? {
+											...chartConfig,
+											theme: { mode: 'dark' },
+									  }
+									: {
+											...chartConfig,
+											theme: { mode: 'light' },
+									  }
+							}
+							series={chartSeries}
+							type={chartType}
+							height='350px%'
+						/>
 					</div>
 				</div>
 			</div>
