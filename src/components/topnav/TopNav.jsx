@@ -44,8 +44,8 @@ const TopNav = () => {
 				<div className='topnav__right-item'>
 					<Dropdown
 						customToggle={() => renderUserToggle(curr_user)}
-            contentData={user_menu}
-            renderItems={(item,index)=> renderUserMenu(item, index)}
+						contentData={user_menu}
+						renderItems={(item, index) => renderUserMenu(item, index)}
 					/>
 				</div>
 				<div className='topnav__right-item'>
@@ -58,7 +58,7 @@ const TopNav = () => {
 					/>
 				</div>
 				<div className='topnav__right-item'>
-				<ThemeMenu/>
+					<ThemeMenu />
 				</div>
 			</div>
 		</div>
