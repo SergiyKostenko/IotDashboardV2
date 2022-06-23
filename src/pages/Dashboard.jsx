@@ -123,10 +123,34 @@ const Dashboard = () => {
 		<div>
 			<div className='row'>
 				<Dropdown
-					//	customToggle={() => renderUserToggle(curr_user)}
+					customToggle={() => (
+						<div className='topnav__right-user'>Chart Type</div>
+					)}
 					contentData={['s', '1']}
 					//	renderItems={(item, index) => renderUserMenu(item, index)}
 				/>
+
+				<div className='col-12'>
+					<div className='card full-height'>
+						<Chart
+							options={
+								themeReducer === 'theme-mode-dark'
+									? {
+											...chartConfig,
+											theme: { mode: 'dark' },
+									  }
+									: {
+											...chartConfig,
+											theme: { mode: 'light' },
+									  }
+							}
+							series={chartSeries}
+							type={chartType}
+							height='350px%'
+						/>
+					</div>
+				</div>
+
 				<div
 					className='col-12 cards-flex'
 					style={{
@@ -161,26 +185,6 @@ const Dashboard = () => {
 					<div>
 						AQI
 						<StatusCard icon='bx bxs-leaf' count='50' title='AQI' />
-					</div>
-				</div>
-				<div className='col-12'>
-					<div className='card full-height'>
-						<Chart
-							options={
-								themeReducer === 'theme-mode-dark'
-									? {
-											...chartConfig,
-											theme: { mode: 'dark' },
-									  }
-									: {
-											...chartConfig,
-											theme: { mode: 'light' },
-									  }
-							}
-							series={chartSeries}
-							type={chartType}
-							height='350px%'
-						/>
 					</div>
 				</div>
 			</div>
