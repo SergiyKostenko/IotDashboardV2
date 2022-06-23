@@ -42,9 +42,7 @@ const TopNav = () => {
 		<div className='topnav'>
 			<div className='topnav__right'>
 				<div className='topnav__right-item'>
-					{/* dropdown */}
 					<Dropdown
-						// icon='bx bx-user'
 						customToggle={() => renderUserToggle(curr_user)}
             contentData={user_menu}
             renderItems={(item,index)=> renderUserMenu(item, index)}
@@ -58,7 +56,6 @@ const TopNav = () => {
 						renderItems={(item, index) => renderNotificationItem(item, index)}
 						renderFooter={() => <Link to='/'>View All</Link>}
 					/>
-					{/* dropdown here */}
 				</div>
 				<div className='topnav__right-item'>
 				<ThemeMenu/>

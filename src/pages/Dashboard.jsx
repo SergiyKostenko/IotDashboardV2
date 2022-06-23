@@ -3,11 +3,12 @@ import StatusCard from '../components/status-card/StatusCard';
 import Chart from 'react-apexcharts';
 import { useSelector, useDispatch } from 'react-redux';
 import ThemeAction from '../redux/actions/ThemeAction';
+import Dropdown from '../components/dropdown/Dropdown';
 
 const Dashboard = () => {
 	const chartTypeOptions = [
 		{ label: 'line', value: 'line' },
-		{ label: 'area', value: 'area' }
+		{ label: 'area', value: 'area' },
 	];
 	const themeReducer = useSelector((state) => state.ThemeReducer).mode;
 	const dispatch = useDispatch();
@@ -56,16 +57,16 @@ const Dashboard = () => {
 		},
 	]);
 	const SidebarItem = (props) => {
-		const active = props.active ? "active" : "";
+		const active = props.active ? 'active' : '';
 		return (
-		  <div className="sidebar__item">
-			<div className={`sidebar__item-inner ${active}`}>
-			  <i className={props.icon}></i>
-			  <span>{chartTypeOptions[0].label}</span>
+			<div className='sidebar__item'>
+				<div className={`sidebar__item-inner ${active}`}>
+					<i className={props.icon}></i>
+					<span>{chartTypeOptions[0].label}</span>
+				</div>
 			</div>
-		  </div>
 		);
-	  };
+	};
 	const [chartType, setchartType] = useState(chartTypeOptions[0].value);
 	const prepareChartData = (data) => {
 		if (data != null) {
@@ -128,20 +129,18 @@ const Dashboard = () => {
 			});
 	}, []);
 
-
 	return (
 		<div>
 			<h2 className='page-header'>Dashboard</h2>
 			<div className='row'>
-			<SidebarItem
-            title={"item.display_name"}
-          //  icon={item.icon}
-          //  active={index === activeItem}
-          />
-		
+				<Dropdown
+				//	customToggle={() => renderUserToggle(curr_user)}
+					contentData={["s","1"]}
+				//	renderItems={(item, index) => renderUserMenu(item, index)}
+				/>
+
 				<div className='col-12'>
 					<div className='card full-height'>
-						{/* chart*/}
 						<Chart
 							options={
 								themeReducer === 'theme-mode-dark'
@@ -156,7 +155,7 @@ const Dashboard = () => {
 							}
 							series={chartSeries}
 							type={chartType}
-							height='400px%'
+							height='350px%'
 						/>
 					</div>
 				</div>
