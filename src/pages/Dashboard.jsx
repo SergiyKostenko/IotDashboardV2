@@ -4,6 +4,7 @@ import Chart from 'react-apexcharts';
 import { useSelector, useDispatch } from 'react-redux';
 import ThemeAction from '../redux/actions/ThemeAction';
 import Dropdown from '../components/dropdown/Dropdown';
+import { Link } from 'react-router-dom';
 
 const Dashboard = () => {
 	const chartTypeOptions = [
@@ -119,15 +120,29 @@ const Dashboard = () => {
 			});
 	}, []);
 
+	const renderChartMenu = (item, index) => (
+		<Link to='/' key={index}>
+			<div
+				className='notification-item'
+				onClick={() => setchartType(item.value)}>
+				<span>{item.label}</span>
+			</div>
+		</Link>
+	);
+
 	return (
 		<div>
 			<div className='row'>
 				<Dropdown
 					customToggle={() => (
-						<div className='topnav__right-user'>Chart Type</div>
+						<h2>
+							<div className='topnav__right-user'>
+								Chart Type<i class='bx bx-bar-chart-alt'></i>
+							</div>
+						</h2>
 					)}
-					contentData={['s', '1']}
-					//	renderItems={(item, index) => renderUserMenu(item, index)}
+					contentData={chartTypeOptions}
+					renderItems={(item, index) => renderChartMenu(item, index)}
 				/>
 
 				<div className='col-12'>
