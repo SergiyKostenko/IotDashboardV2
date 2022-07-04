@@ -8,10 +8,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import ThemeAction from '../../redux/actions/ThemeAction';
 import { ApplicationInsights } from '@microsoft/applicationinsights-web';
-import {
-	ReactPlugin,
-	withAITracking,
-} from '@microsoft/applicationinsights-react-js';
+import { ReactPlugin } from '@microsoft/applicationinsights-react-js';
 import { createBrowserHistory } from 'history';
 
 const Layout = () => {
