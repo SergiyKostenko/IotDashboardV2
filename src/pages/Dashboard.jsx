@@ -136,8 +136,8 @@ const Dashboard = () => {
 				<Dropdown
 					customToggle={() => (
 						<h2>
-							<div className='topnav__right-user'>
-								Chart Type<i class='bx bx-bar-chart-alt'></i>
+							<div className='dropdown__chart'>
+								Chart<i class='bx bx-bar-chart-alt'></i>
 							</div>
 						</h2>
 					)}
