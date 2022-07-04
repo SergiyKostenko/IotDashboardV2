@@ -2,7 +2,7 @@ import React from 'react';
 import './topnav.css';
 import { Link } from 'react-router-dom';
 import Dropdown from '../dropdown/Dropdown';
-import notifications from '../../assets/JsonData/notification.json';
+
 import user_image from '../../assets/images/user.gif';
 import ThemeMenu from '../thememenu/ThemeMenu';
 import user_menu from '../../assets/JsonData/user_menus.json';
@@ -11,13 +11,6 @@ const curr_user = {
 	display_name: 'Sergiy',
 	image: user_image,
 };
-
-const renderNotificationItem = (item, index) => (
-	<div className='notification-item' key={index}>
-		<i className={item.icon}></i>
-		<span>{item.content}</span>
-	</div>
-);
 
 const renderUserToggle = (user) => (
 	<div className='topnav__right-user'>
@@ -52,9 +45,9 @@ const TopNav = () => {
 					<Dropdown
 						icon='bx bx-bell'
 						badge='12'
-						contentData={notifications}
-						renderItems={(item, index) => renderNotificationItem(item, index)}
-						renderFooter={() => <Link to='/'>View All</Link>}
+						//	contentData={notifications}
+						//	renderItems={(item, index) => renderNotificationItem(item, index)}
+						//	renderFooter={() => <Link to='/'>View All</Link>}
 					/>
 				</div>
 				<div className='topnav__right-item'>
